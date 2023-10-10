@@ -3,8 +3,6 @@ package main
 import (
 	// "strconv"
 
-	"fmt"
-
 	"github.com/gofiber/fiber/v2"
 
 	config "github.com/mvezer/dosing-pump/config"
