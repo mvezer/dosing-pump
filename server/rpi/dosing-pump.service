@@ -1,0 +1,12 @@
+[Service]
+WorkingDirectory=/home/dosing-pump
+ExecStart=/home/dosing-pump/dosing-pump
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=propanel
+User=root
+Group=root
+Environment=SERVER_ENV=pi
+[Install]
+WantedBy=multi-user.target
