@@ -3,14 +3,13 @@ package db
 import (
 	"fmt"
 
-	"gobot.io/x/gobot/v2/drivers/gpio"
 	"gobot.io/x/gobot/v2/drivers/i2c"
 	"gobot.io/x/gobot/v2/platforms/raspi"
 )
 
 type Pump struct {
-	Id           int
-	Button       *gpio.ButtonDriver
+	Id int
+	// Button       *gpio.ButtonDriver
 	Motor        *i2c.AdafruitMotorHatDriver
 	ButtonEvents chan interface{}
 }
@@ -40,18 +39,18 @@ func (pc *PumpController) Start() {
 
 func (pc *PumpController) AddPump(id int, buttonPin string) {
 	pc.Pumps[id] = Pump{
-		Id:     id,
-		Button: gpio.NewButtonDriver(pc.RpiAdaptor, buttonPin),
+		Id: id,
+		// Button: gpio.NewButtonDriver(pc.RpiAdaptor, buttonPin),
 	}
-	pc.Pumps[id].Button.Start()
-	pc.Pumps[id].Button.On(gpio.ButtonPush, func(data interface{}) {
-		fmt.Printf("Pump %d button pushed\n", id)
-		pc.RunPump(id, 0)
-	})
-	pc.Pumps[id].Button.On(gpio.ButtonRelease, func(data interface{}) {
-		fmt.Printf("Pump %d button released\n", id)
-		pc.StopPump(id)
-	})
+	// pc.Pumps[id].Button.Start()
+	// pc.Pumps[id].Button.On(gpio.ButtonPush, func(data interface{}) {
+	// 	fmt.Printf("Pump %d button pushed\n", id)
+	// 	pc.RunPump(id, 0)
+	// })
+	// pc.Pumps[id].Button.On(gpio.ButtonRelease, func(data interface{}) {
+	// 	fmt.Printf("Pump %d button released\n", id)
+	// 	pc.StopPump(id)
+	// })
 	pc.Pumps[id].Motor.Start()
 }
 
