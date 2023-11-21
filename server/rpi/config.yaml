@@ -1,7 +1,0 @@
-timeOut: 2000
-pumpSpeed: 128
-schedule:
-  - pumpId: 0
-    amountUl: 1000
-    cron: "* * * * 18"
-
